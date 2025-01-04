@@ -100,9 +100,5 @@ if (config?.yaCounter) {
             }),
         }),
     );
-    ym(config.yaCounter, "init", {
-        clickmap: true,
-        trackLinks: true,
-        accurateTrackBounce: true,
-    });
+    func.yaInit();
 }

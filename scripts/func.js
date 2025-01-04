@@ -24,6 +24,14 @@ class func {
         };
     }
 
+    static yaInit() {
+        return () => {
+            config?.yaCounter
+                ? ym(config.yaCounter, "init", {clickmap: true, trackLinks: true, accurateTrackBounce: true})
+                : console.error(`Undefined counter [event ${name}]`);
+        };
+    }
+
     static attrName(name) {
         return name.replace(/[A-Z]/g, letter => `-${letter.toLowerCase()}`);
     }
