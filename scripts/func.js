@@ -1,3 +1,5 @@
+import config from './config.js';
+
 class func {
     /**
      * @param data {{type: String, attr?: Object|null, html?: String|Node|Array|null, events?: Object|null}}
@@ -10,7 +12,9 @@ class func {
             if (data?.html) {
                 typeof data.html === 'string'
                     ? el.innerHTML = data.html
-                    : (Array.isArray(data.html) ? data.html.forEach(e => el.append(e)) : el.appendChild(data.html));
+                    : (Array.isArray(data.html)
+                        ? data.html.forEach(e => el.append(e))
+                        : el.appendChild(data.html));
             }
             data?.events && Object.entries(data.events).forEach(([key, value]) => el.addEventListener(key, value));
             return el;

@@ -1,5 +1,5 @@
-import func from './func.js';
 import config from './config.js';
+import func from './func.js';
 
 // Head
 document.addEventListener("DOMContentLoaded", () => {
