@@ -1,0 +1,192 @@
+@use "variables" as *;
+
+/* <!-- <editor-folder Clear> --> */
+* {
+  box-sizing: border-box;
+}
+
+html, body, div, img, a, hr, table, tr, td, input, select, textarea, button {
+  border: none;
+  border-radius: 0;
+  margin: 0;
+  padding: 0;
+  font-family: inherit;
+  font-size: inherit;
+  font-style: inherit;
+  font-weight: inherit;
+  outline: none;
+  vertical-align: top;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0 0 10px;
+  padding: 0;
+}
+
+::selection {
+  background: $info;
+  color: $info-invert;
+}
+
+::placeholder {
+  color: $main-text;
+  opacity: 0.6;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+  background: $disabled-invert;
+
+  &-thumb {
+    background: $disabled;
+  }
+}
+
+body {
+  font-family: sans-serif;
+  font-size: 16px;
+  text-align: left;
+  background: $main-invert;
+  color: $main-text;
+  min-width: 320px;
+}
+
+a {
+  transition: all 0.2s ease-in-out;
+  color: $info;
+  text-decoration: none;
+  cursor: pointer !important;
+
+  &:is(:hover, :focus) {
+    color: $info-active;
+  }
+}
+
+@media print {
+  a:after {
+    content: "(" attr(href) ")";
+  }
+}
+
+img {
+  max-width: 100%;
+  object-fit: cover;
+}
+
+input, select, textarea, button {
+  position: relative;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4px 10px;
+
+  &, &:is(input[type=checkbox]):before {
+    border-radius: 5px;
+  }
+
+  &:is(input[type=radio]):before {
+    border-radius: 50%;
+  }
+
+  &, &:is(input[type=checkbox], input[type=radio]):before, &:is(input[type=checkbox], input[type=radio]):after {
+    transition: all 0.2s ease-in-out;
+  }
+
+  &:is(button, input[type=submit]), &:is(input[type=checkbox], input[type=radio]):before, &:is(input[type=checkbox], input[type=radio]):after {
+    cursor: pointer;
+  }
+
+  &:is(button, input[type=submit]), &:is(input[type=checkbox], input[type=radio]):after {
+    background: $main;
+    color: $main-invert;
+  }
+
+  &:not(button, input[type=submit]), &:is(input[type=checkbox], input[type=radio]):before {
+    background: $main-invert;
+    color: $main-text;
+    border: 1px solid $main;
+  }
+
+  &:not(input[type=checkbox], input[type=radio]) {
+    width: 256px;
+    min-width: 140px;
+    min-height: 34px;
+  }
+
+  &:not(input[type=checkbox], input[type=radio], textarea) {
+    height: 34px;
+  }
+
+  &:is(textarea) {
+    height: 94px;
+    resize: vertical;
+  }
+
+  &:is(input[type=checkbox], input[type=radio]) {
+    width: 20px;
+    height: 20px;
+    margin: 7px 0;
+    visibility: hidden;
+
+    &:before, &:after {
+      position: absolute;
+      visibility: visible;
+      content: "";
+    }
+
+    &:before {
+      inset: 3px;
+    }
+  }
+
+  &:hover, &:focus {
+    &:is(button, input[type=submit]), &:is(input[type=checkbox], input[type=radio]):after {
+      background: $main-active;
+      color: $main-invert-active;
+    }
+
+    &:not(button, input[type=submit]), &:is(input[type=checkbox], input[type=radio]):before {
+      border-color: $main-active;
+    }
+  }
+
+  &:checked {
+    &:is(input[type=checkbox], input[type=radio]):after {
+      inset: 0;
+      visibility: visible;
+      mask: $icon-check center/contain no-repeat;
+    }
+  }
+
+  &:disabled {
+    &, &:is(input[type=checkbox], input[type=radio]):before, &:is(input[type=checkbox], input[type=radio]):after {
+      cursor: not-allowed;
+    }
+
+    &:is(button, input[type=submit]), &:is(input[type=checkbox], input[type=radio]):after {
+      background: $disabled;
+      color: $disabled-invert;
+    }
+
+    &:not(button, input[type=submit]), &:is(input[type=checkbox], input[type=radio]):before {
+      background: $disabled-invert;
+      color: $disabled;
+      border-color: $disabled;
+    }
+  }
+}
+
+label {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+hr {
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, $main 20%, $main-active 80%, rgba(0, 0, 0, 0) 100%);
+  height: 1px;
+  margin: 5px auto 4px;
+  clear: both;
+}
+/* <!-- </editor-folder--> */
